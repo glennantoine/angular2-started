@@ -9,21 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var product_service_1 = require("./products/product.service");
-var AppComponent = (function () {
-    function AppComponent() {
-        this.pageTitle = "Acme Product Management";
+var products_data_1 = require("./products.data");
+var ProductService = (function () {
+    function ProductService() {
     }
-    return AppComponent;
+    ProductService.prototype.getProducts = function () {
+        return products_data_1.PRODUCTS;
+    };
+    return ProductService;
 }());
-AppComponent = __decorate([
-    core_1.Component({
-        moduleId: module.id,
-        selector: 'pm-app',
-        providers: [product_service_1.ProductService],
-        template: "\n        <div><h1>{{pageTitle}}</h1>\n            <pm-products></pm-products>\n        </div>\n    "
-    }),
+ProductService = __decorate([
+    core_1.Injectable(),
     __metadata("design:paramtypes", [])
-], AppComponent);
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+], ProductService);
+exports.ProductService = ProductService;
+//# sourceMappingURL=product.service.js.map
