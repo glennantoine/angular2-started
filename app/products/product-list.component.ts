@@ -4,7 +4,6 @@ import {IProduct} from './product';
 
 
 @Component({
-    selector: 'pm-products',
     moduleId: module.id,
     templateUrl: 'product-list.component.html',
     styleUrls: ['product-list.component.css']
@@ -37,7 +36,7 @@ export class ProductListComponent implements OnInit {
         this._productService.getProducts()
             .subscribe(
                 products => this.products = products,
-                error => this.errorMessage <any>error);
+                error => this.errorMessage = <any>error);
     }
 
     onRatingClicked(message: string): void {
