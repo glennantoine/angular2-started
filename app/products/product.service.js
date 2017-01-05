@@ -9,18 +9,35 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var products_data_1 = require("./products.data");
+var http_1 = require("@angular/http");
+var Observable_1 = require("rxjs/Observable");
+require("rxjs/add/operator/map");
+require("rxjs/add/operator/do");
+require("rxjs/add/operator/catch");
+// Original Implementation during development
+// import { PRODUCTS } from "./products.data";
 var ProductService = (function () {
-    function ProductService() {
+    function ProductService(_http) {
+        this._http = _http;
+        this._productUrl = "api/products/products.json";
     }
+    // getProducts(): IProduct[] {
+    //     return PRODUCTS;
+    // }
     ProductService.prototype.getProducts = function () {
-        return products_data_1.PRODUCTS;
+        return this._http.get(this._productUrl)
+            .map(function (response) { return response.json(); })
+            .catch(this.handleError);
+    };
+    ProductService.prototype.handleError = function (error) {
+        console.log(error);
+        return Observable_1.Observable.throw(error.json().error || 'Server Error');
     };
     return ProductService;
 }());
 ProductService = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [http_1.Http])
 ], ProductService);
 exports.ProductService = ProductService;
 //# sourceMappingURL=product.service.js.map
