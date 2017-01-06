@@ -37,6 +37,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
         this._router.navigate(['/products']);
     }
 
+    // *****************************
+    //Todo: Enhance functionality to better handle page title update onclick
     getProduct(id: number) {
         this._productService.getProduct(id).subscribe(
             product => this.product = product,

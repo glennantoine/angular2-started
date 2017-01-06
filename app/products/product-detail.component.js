@@ -31,6 +31,8 @@ var ProductDetailComponent = (function () {
     ProductDetailComponent.prototype.onBack = function () {
         this._router.navigate(['/products']);
     };
+    // *****************************
+    //Todo: Enhance functionality to better handle page title update onclick
     ProductDetailComponent.prototype.getProduct = function (id) {
         var _this = this;
         this._productService.getProduct(id).subscribe(function (product) { return _this.product = product; }, function (error) { return _this.errorMessage = error; });
