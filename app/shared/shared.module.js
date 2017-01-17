@@ -8,33 +8,30 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var platform_browser_1 = require("@angular/platform-browser");
 var core_1 = require("@angular/core");
-var http_1 = require("@angular/http");
-var app_component_1 = require("./app.component");
-var app_routing_module_1 = require("./app-routing.module");
-var welcome_component_1 = require("./home/welcome.component");
-var product_module_1 = require("./products/product.module");
-var AppModule = (function () {
-    function AppModule() {
+var forms_1 = require("@angular/forms");
+var common_1 = require("@angular/common");
+var star_component_1 = require("./star.component");
+var SharedModule = (function () {
+    function SharedModule() {
     }
-    return AppModule;
+    return SharedModule;
 }());
-AppModule = __decorate([
+SharedModule = __decorate([
     core_1.NgModule({
-        imports: [
-            platform_browser_1.BrowserModule,
-            http_1.HttpModule,
-            product_module_1.ProductModule,
-            app_routing_module_1.AppRoutingModule
-        ],
         declarations: [
-            app_component_1.AppComponent,
-            welcome_component_1.WelcomeComponent
+            star_component_1.StarComponent
         ],
-        bootstrap: [app_component_1.AppComponent]
+        imports: [
+            common_1.CommonModule,
+        ],
+        exports: [
+            common_1.CommonModule,
+            forms_1.FormsModule,
+            star_component_1.StarComponent
+        ]
     }),
     __metadata("design:paramtypes", [])
-], AppModule);
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+], SharedModule);
+exports.SharedModule = SharedModule;
+//# sourceMappingURL=shared.module.js.map

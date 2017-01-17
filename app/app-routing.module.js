@@ -8,33 +8,28 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var platform_browser_1 = require("@angular/platform-browser");
 var core_1 = require("@angular/core");
-var http_1 = require("@angular/http");
-var app_component_1 = require("./app.component");
-var app_routing_module_1 = require("./app-routing.module");
+var router_1 = require("@angular/router");
 var welcome_component_1 = require("./home/welcome.component");
-var product_module_1 = require("./products/product.module");
-var AppModule = (function () {
-    function AppModule() {
+var AppRoutingModule = (function () {
+    function AppRoutingModule() {
     }
-    return AppModule;
+    return AppRoutingModule;
 }());
-AppModule = __decorate([
+AppRoutingModule = __decorate([
     core_1.NgModule({
         imports: [
-            platform_browser_1.BrowserModule,
-            http_1.HttpModule,
-            product_module_1.ProductModule,
-            app_routing_module_1.AppRoutingModule
+            router_1.RouterModule.forRoot([
+                { path: "welcome", component: welcome_component_1.WelcomeComponent },
+                { path: "", redirectTo: "welcome", pathMatch: "full" },
+                { path: "**", redirectTo: "welcome", pathMatch: "full" }
+            ])
         ],
-        declarations: [
-            app_component_1.AppComponent,
-            welcome_component_1.WelcomeComponent
-        ],
-        bootstrap: [app_component_1.AppComponent]
+        exports: [
+            router_1.RouterModule
+        ]
     }),
     __metadata("design:paramtypes", [])
-], AppModule);
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+], AppRoutingModule);
+exports.AppRoutingModule = AppRoutingModule;
+//# sourceMappingURL=app-routing.module.js.map

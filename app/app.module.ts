@@ -1,9 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from "@angular/http";
-import { RouterModule } from "@angular/router";
 
 import { AppComponent }  from './app.component';
+import { AppRoutingModule } from "./app-routing.module";
 import { WelcomeComponent } from "./home/welcome.component";
 import { ProductModule } from "./products/product.module";
 
@@ -12,11 +12,7 @@ import { ProductModule } from "./products/product.module";
       BrowserModule,
       HttpModule,
       ProductModule,
-      RouterModule.forRoot([
-          { path: "welcome", component: WelcomeComponent },
-          { path: "", redirectTo: "welcome", pathMatch: "full" },
-          { path: "**", redirectTo: "welcome", pathMatch: "full" }
-      ])
+      AppRoutingModule
   ],
   declarations: [
       AppComponent,
